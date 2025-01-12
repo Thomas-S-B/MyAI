@@ -1,7 +1,7 @@
 from gensim.models import Word2Vec
 from gensim.utils import simple_preprocess
 
-file_path = "./02_Tokenisierung/Ausführungsplanung.txt"  # `./` bedeutet relativ zum aktuellen Verzeichnis
+file_path = "./02_Tokenisierung/Testtext.txt"
 
 # Schritt 1: Lade die Textdatei
 def read_text_file(file_path):
