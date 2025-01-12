@@ -53,7 +53,7 @@ print(f"'den' - 'bieten' + 'materialien' ≈ {result[0][0]}")
 # Clustering
 #   Vektoren extrahieren
 word_vectors = np.array([model.wv[word] for word in model.wv.index_to_key[:100]])
-#   KM-eans++-Clustering (ist der Standard)
+#   KM-Means++-Clustering (ist der Standard)
 kmeans = KMeans(n_clusters=5, random_state=0).fit(word_vectors)
 #   Cluster anzeigen
 for i, word in enumerate(model.wv.index_to_key[:100]):
