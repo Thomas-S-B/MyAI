@@ -30,9 +30,12 @@ model.save("word2vec_model.model")
 # Optional: Speichere die Wortvektoren separat
 model.wv.save_word2vec_format("word_vectors.txt", binary=False)
 
-# Schritt 5: Lade und nutze das Modell
-# Ähnliche Wörter finden
+######################################################################################
+# Schritt 5: Lade Modell und Nutzung des Modells
+######################################################################################
 loaded_model = Word2Vec.load("word2vec_model.model")
+
+# Ähnliche Wörter finden
 print(loaded_model.wv.most_similar("materialien", topn=5))  # Ähnliche Wörter suchen
 
 # Wortvektor abrufen
