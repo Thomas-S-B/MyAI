@@ -81,6 +81,7 @@ print("Ähnlichkeitsmatrix:")
 print(similarity_matrix)
 
 # Fehlende Wörter vorhersagen
+print("Das Beispiel ist ___.")
 words = ["Das", "Beispiel", "ist", "___", "."]
 candidates = model.wv.most_similar(positive=["beispiel", "beschreiben"], negative=[], topn=5)
 print("Wahrscheinlichstes Wort für die Lücke:", candidates)
