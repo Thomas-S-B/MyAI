@@ -71,12 +71,10 @@ print(f"Vektor für den Satz '{text}': {vector}")
 # Ähnliche Dokumente finden
 doc1 = "Durch Lösung der Beispiele!"
 doc2 = "Beispiele sind die Lösung."
-doc3 = "Ziel bennenen."
-
+doc3 = "Ziel benennen."
 docs = [doc1, doc2, doc3]
 doc_vectors = [sentence_vector(doc, model) for doc in docs]
-
-# Ähnlichkeit zwischen Dokumenten berechnen
+#  Ähnlichkeit zwischen Dokumenten berechnen
 from sklearn.metrics.pairwise import cosine_similarity
 similarity_matrix = cosine_similarity(doc_vectors)
 print("Ähnlichkeitsmatrix:")
