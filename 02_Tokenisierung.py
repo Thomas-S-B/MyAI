@@ -48,13 +48,21 @@ result = model.wv.most_similar(positive=["den", "materialien"], negative=["biete
 print(f"'den' - 'bieten' + 'materialien' ≈ {result[0][0]}")
 
 # Clustering
-# Vektoren extrahieren
+#   Vektoren extrahieren
 word_vectors = np.array([model.wv[word] for word in model.wv.index_to_key[:100]])
-# KMeans-Clustering
+#   KMeans-Clustering
 kmeans = KMeans(n_clusters=5, random_state=0).fit(word_vectors)
-# Cluster anzeigen
+#   Cluster anzeigen
 for i, word in enumerate(model.wv.index_to_key[:100]):
     print(f"Wort: {word}, Cluster: {kmeans.labels_[i]}")
 
+# Textklassifikation
+def sentence_vector(sentence, model):
+    words = sentence.lower().split()
+    vectors = [model.wv[word] for word in words if word in model.wv]
+    return np.mean(vectors, axis=0) if vectors else np.zeros(model.vector_size)
+text = "Durch Lösung der Beispiele!"
+vector = sentence_vector(text, model)
+print(f"Vektor für den Satz '{text}': {vector}")
 
 
