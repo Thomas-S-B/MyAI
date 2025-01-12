@@ -1,5 +1,7 @@
 from gensim.models import Word2Vec
 from gensim.utils import simple_preprocess
+from sklearn.cluster import KMeans
+import numpy as np
 
 file_path = "./02_Tokenisierung/Testtext.txt"
 
@@ -38,7 +40,21 @@ word_vector = model.wv["materialien"]
 print(word_vector)
 
 # Wörter vergleichen (Ähnlichkeit)
-similarity = model.wv.similarity("materialien", "diese")
+similarity = model.wv.similarity("materialien", "den")
 print(similarity)
+
+# Wortarithmetik
+result = model.wv.most_similar(positive=["den", "materialien"], negative=["bieten"], topn=1)
+print(f"'den' - 'bieten' + 'materialien' ≈ {result[0][0]}")
+
+# Clustering
+# Vektoren extrahieren
+word_vectors = np.array([model.wv[word] for word in model.wv.index_to_key[:100]])
+# KMeans-Clustering
+kmeans = KMeans(n_clusters=5, random_state=0).fit(word_vectors)
+# Cluster anzeigen
+for i, word in enumerate(model.wv.index_to_key[:100]):
+    print(f"Wort: {word}, Cluster: {kmeans.labels_[i]}")
+
 
 
