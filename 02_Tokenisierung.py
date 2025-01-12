@@ -30,5 +30,5 @@ model.wv.save_word2vec_format("word_vectors.txt", binary=False)
 
 # Schritt 5: Lade und nutze das Modell
 loaded_model = Word2Vec.load("word2vec_model.model")
-print(loaded_model.wv.most_similar("materialien", topn=5))  # Ähnliche Wörter zu "Bau"
+print(loaded_model.wv.most_similar("materialien", topn=5))  # Ähnliche Wörter suchen
 
