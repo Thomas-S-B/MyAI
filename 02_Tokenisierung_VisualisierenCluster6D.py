@@ -47,7 +47,7 @@ fig.update_layout(
     legend=dict(
         title="Cluster",
         orientation="v",  # Vertikale Ausrichtung der Legende
-        x=1.05,  # Position rechts außerhalb des Plots
+        x=1.10,  # Position rechts außerhalb des Plots
         y=1,    # Obere Position
         bgcolor="rgba(255,255,255,0.8)",  # Hintergrund der Legende
         bordercolor="black",  # Randfarbe
