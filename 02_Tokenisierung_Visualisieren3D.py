@@ -6,7 +6,7 @@ import pandas as pd
 # Lade das Word2Vec-Modell
 model = Word2Vec.load("word2vec_model.model")
 
-# Reduziere die Dimension auf 3
+# Reduziere auf 3 Dimensionen
 pca = PCA(n_components=3)
 word_vectors = model.wv[model.wv.index_to_key]
 word_vectors_3d = pca.fit_transform(word_vectors)
