@@ -13,7 +13,7 @@ word_vectors = model.wv[model.wv.index_to_key]
 word_vectors_3d = pca.fit_transform(word_vectors)
 
 # Wende K-Means-Clustering an
-num_clusters = 3  # Anzahl der Cluster
+num_clusters = 2  # Anzahl der Cluster
 kmeans = KMeans(n_clusters=num_clusters, random_state=42)
 cluster_labels = kmeans.fit_predict(word_vectors_3d)
 
@@ -36,14 +36,23 @@ fig = px.scatter_3d(
     z='z',
     text='word',
     color='cluster',  # Clusterzugehörigkeit als Farbe
-    symbol='cluster',  # Optional: Unterschiedliche Symbole für Cluster
-    color_continuous_scale='Viridis',  # Farbskala (nur bei numerischen Clustern)
+    symbol='cluster',  # Unterschiedliche Symbole für Cluster
+    color_discrete_sequence=px.colors.qualitative.Set1  # Diskrete Farben für Cluster
 )
 
-# Plot-Layout anpassen
-fig.update_traces(marker=dict(size=5), textposition='top center')
+# Plot-Layout und Legende anpassen
+fig.update_traces(marker=dict(size=8), textposition='top center')
 fig.update_layout(
     title="3D-Cluster-Visualisierung von Word2Vec",
+    legend=dict(
+        title="Cluster",
+        orientation="v",  # Vertikale Ausrichtung der Legende
+        x=1.05,  # Position rechts außerhalb des Plots
+        y=1,    # Obere Position
+        bgcolor="rgba(255,255,255,0.8)",  # Hintergrund der Legende
+        bordercolor="black",  # Randfarbe
+        borderwidth=1         # Randbreite
+    ),
     scene=dict(
         xaxis_title='PCA Dimension 1',
         yaxis_title='PCA Dimension 2',
@@ -53,7 +62,3 @@ fig.update_layout(
 
 # Zeige den Plot
 fig.show()
-
-
-
-
