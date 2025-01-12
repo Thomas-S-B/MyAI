@@ -19,14 +19,16 @@ vector_lengths = np.linalg.norm(word_vectors, axis=1)
 # Hinweis: Hier wird ein zufälliger Wert als Platzhalter genutzt, ersetze ihn mit einer realen Metrik.
 word_frequencies = [model.wv.get_vecattr(word, "count") for word in model.wv.index_to_key]
 
+dimensionen = 25
+
 # Daten für Plotly vorbereiten
 data = pd.DataFrame({
-    'x': word_vectors_3d[:10, 0],
-    'y': word_vectors_3d[:10, 1],
-    'z': word_vectors_3d[:10, 2],
-    'word': model.wv.index_to_key[:10],
-    'color': vector_lengths[:10],  # Füge die vierte Dimension (Farbe) hinzu
-    'size': word_frequencies[:10]  # Füge die fünfte Dimension (Größe) hinzu
+    'x': word_vectors_3d[:dimensionen, 0],
+    'y': word_vectors_3d[:dimensionen, 1],
+    'z': word_vectors_3d[:dimensionen, 2],
+    'word': model.wv.index_to_key[:dimensionen],
+    'color': vector_lengths[:dimensionen],  # Füge die vierte Dimension (Farbe) hinzu
+    'size': word_frequencies[:dimensionen]  # Füge die fünfte Dimension (Größe) hinzu
 })
 
 # Interaktiven 3D-Plot erstellen
@@ -54,4 +56,3 @@ fig.update_layout(
 
 # Zeige den Plot
 fig.show()
-
