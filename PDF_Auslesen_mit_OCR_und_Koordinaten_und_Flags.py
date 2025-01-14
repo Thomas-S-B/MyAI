@@ -3,7 +3,7 @@ import os
 import re
 
 # PDF-Datei öffnen
-pdf_path = "./14_Treppen/FT_XX_14-101_B_F.pdf"
+pdf_path = "./abc.pdf"
 
 # Name der Ausgabedatei erstellen
 output_path = os.path.splitext(pdf_path)[0] + "_OCR_mit_Koordinaten_und_Flags.txt"
