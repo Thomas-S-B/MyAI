@@ -21,7 +21,6 @@ def is_on_line(ref_item, other_items, threshold=5):
 
 # Funktion zur Prüfung, ob ein Text eine Gewichtsangabe ist
 def is_weight(text):
-    """Prüft, ob der Text eine Gewichtsangabe enthält."""
     weight_pattern = re.compile(r"\b\d+(\.\d+)?\s?(kg|g|t|tonnen|kilogramm|gramm)\b", re.IGNORECASE)
     return bool(weight_pattern.search(text))
 
